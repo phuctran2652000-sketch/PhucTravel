@@ -135,10 +135,10 @@ h1, h2, h3, h4, h5 {
 .btn-zalo {
   background: var(--zalo-green);
   color: var(--white);
-  box-shadow: 0 4px 20px rgba(6,199,85,.35);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.35);
 }
 .btn-zalo:hover {
-  background: #05a847;
+  background: #f3f3f3;
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(6,199,85,.45);
 }
@@ -1267,7 +1267,7 @@ h1, h2, h3, h4, h5 {
   color: var(--white);
   box-shadow: 0 4px 14px rgba(6,199,85,.3);
 }
-.btn-zalo-ch:hover { background: #05a847; transform: translateY(-2px); }
+.btn-zalo-ch:hover { background: #ffffff; transform: translateY(-2px); }
 
 .btn-messenger {
   background: #0084ff;
