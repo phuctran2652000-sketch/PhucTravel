@@ -434,7 +434,7 @@ if (contactForm) {
 
     try {
       const response = await fetch(
-        `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+        `https://api.telegram.org/bot8814642867:AAFADdOIAiG4Nvt4-MQ6v0CWJZ_Nr2t0Tqo/sendMessage`,
         {
           method: "POST",
           headers: {
