@@ -396,42 +396,78 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ============================================================
-     10. CONTACT FORM SUBMIT (DEMO – KHÔNG BACKEND)
-     ============================================================ */
-  const contactForm  = document.getElementById('contact-form');
-  const formSuccess   = document.getElementById('form-success');
+   10. CONTACT FORM SUBMIT → TELEGRAM
+   ============================================================ */
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
+const contactForm = document.getElementById('contact-form');
+const formSuccess = document.getElementById('form-success');
 
-      const name  = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
+const BOT_TOKEN = "8814642867:AAFADdOIAiG4Nvt4-MQ6v0CWJZ_Nr2t0Tqo";
+const CHAT_ID = "8723711467";
 
-      if (!name || !phone) {
-        alert('Vui lòng nhập đầy đủ Họ tên và Số điện thoại.');
-        return;
+if (contactForm) {
+  contactForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const pickup = document.getElementById('pickup').value.trim();
+    const dropoff = document.getElementById('dropoff').value.trim();
+    const note = document.getElementById('note').value.trim();
+
+    if (!name || !phone) {
+      alert('Vui lòng nhập đầy đủ Họ tên và Số điện thoại.');
+      return;
+    }
+
+    const message = `
+🚐 ĐƠN ĐẶT XE MỚI
+
+👤 Khách hàng: ${name}
+📞 Điện thoại: ${phone}
+📍 Điểm đón: ${pickup}
+📍 Điểm đến: ${dropoff}
+📝 Ghi chú: ${note}
+
+🌐 Gửi từ website Phúc Travel
+`;
+
+    try {
+      const response = await fetch(
+        `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: message
+          })
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.ok) {
+        contactForm.style.display = 'none';
+        formSuccess.style.display = 'block';
+
+        setTimeout(() => {
+          contactForm.reset();
+          contactForm.style.display = 'block';
+          formSuccess.style.display = 'none';
+        }, 6000);
+      } else {
+        alert("Không gửi được yêu cầu.");
       }
 
-      // Validate số điện thoại Việt Nam (cơ bản)
-      const phonePattern = /^(0|\+84)[0-9]{9,10}$/;
-      if (!phonePattern.test(phone.replace(/\s/g, ''))) {
-        alert('Số điện thoại không hợp lệ. Vui lòng kiểm tra lại.');
-        return;
-      }
-
-      // Hiện thông báo thành công (demo front-end, chưa có backend xử lý)
-      contactForm.style.display = 'none';
-      if (formSuccess) formSuccess.style.display = 'block';
-
-      // Reset form và quay lại sau 6 giây để khách có thể gửi tiếp
-      setTimeout(function () {
-        contactForm.reset();
-        contactForm.style.display = 'block';
-        if (formSuccess) formSuccess.style.display = 'none';
-      }, 6000);
-    });
-  }
+    } catch (error) {
+      console.error(error);
+      alert("Lỗi kết nối Telegram.");
+    }
+  });
+}
 
 
   /* ============================================================
