@@ -402,8 +402,8 @@ document.addEventListener('DOMContentLoaded', function () {
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
 
-const BOT_TOKEN = "8814642867:AAFADdOIAiG4Nvt4-MQ6v0CWJZ_Nr2t0Tqo";
-const CHAT_ID = "8723711467";
+const BOT_TOKEN = "8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs";
+const CHAT_ID = "7286561986";
 
 if (contactForm) {
   contactForm.addEventListener('submit', async function (e) {
@@ -434,7 +434,7 @@ if (contactForm) {
 
     try {
       const response = await fetch(
-        `https://api.telegram.org/bot8814642867:AAFADdOIAiG4Nvt4-MQ6v0CWJZ_Nr2t0Tqo/sendMessage`,
+        `https://api.telegram.org/bot8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs/sendMessage`,
         {
           method: "POST",
           headers: {
