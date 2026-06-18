@@ -6,4 +6,24 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <url>
+    <loc>https://phuctravel.com/thue-xe-da-nang.html</loc>
+  </url>
+  
+  <url>
+    <loc>https://phuctravel.com/thue-xe-hue.html</loc>
+  </url>
+
+  <url>
+    <loc>https://phuctravel.com/thue-xe-hoi-an.html</loc>
+  </url>
+
+  <url>
+    <loc>https://phuctravel.com/tour-ba-na-hills.html</loc>
+  </url>
+
+  <url>
+    <loc>https://phuctravel.com/dua-don-san-bay-da-nang.html</loc>
+  </url>
 </urlset>
