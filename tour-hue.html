@@ -150,20 +150,39 @@
         <a href="https://zalo.me/0934984410" target="_blank" rel="noopener" class="btn btn-outline">💬 Zalo đặt tour</a>
       </div>
     </div>
+
     <div class="quick-form reveal zoom-in" id="booking-form">
       <h3>Đặt Tour Huế Nhanh</h3>
       <p class="qf-sub">PHUC TRAVEL phản hồi trong 15 phút</p>
       <form id="quickBookingForm">
-        <div class="form-row"><label for="qf-name">Họ tên</label><input type="text" id="qf-name" name="name" placeholder="Nguyễn Văn A" required></div>
-        <div class="form-grid-2">
-          <div class="form-row"><label for="qf-phone">Số điện thoại</label><input type="tel" id="qf-phone" name="phone" placeholder="09xx xxx xxx" required></div>
-          <div class="form-row"><label for="qf-email">Email</label><input type="email" id="qf-email" name="email" placeholder="email@vidu.com"></div>
+        <div class="form-row">
+          <label for="qf-name">Họ tên</label>
+          <input type="text" id="qf-name" name="name" placeholder="Nguyễn Văn A" required>
         </div>
         <div class="form-grid-2">
-          <div class="form-row"><label for="qf-date">Ngày đi</label><input type="date" id="qf-date" name="date" required></div>
-          <div class="form-row"><label for="qf-guests">Số khách</label><input type="number" id="qf-guests" name="guests" min="1" value="2" required></div>
+          <div class="form-row">
+            <label for="qf-phone">Số điện thoại</label>
+            <input type="tel" id="qf-phone" name="phone" placeholder="09xx xxx xxx" required>
+          </div>
+          <div class="form-row">
+            <label for="qf-email">Email</label>
+            <input type="email" id="qf-email" name="email" placeholder="email@vidu.com">
+          </div>
         </div>
-        <div class="form-row"><label for="qf-note">Ghi chú</label><textarea id="qf-note" name="note" placeholder="Yêu cầu thêm (nếu có)"></textarea></div>
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="qf-date">Ngày đi</label>
+            <input type="date" id="qf-date" name="date" required>
+          </div>
+          <div class="form-row">
+            <label for="qf-guests">Số khách</label>
+            <input type="number" id="qf-guests" name="guests" min="1" value="2" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="qf-note">Ghi chú</label>
+          <textarea id="qf-note" name="note" placeholder="Yêu cầu thêm (nếu có)"></textarea>
+        </div>
         <button type="submit" class="btn btn-primary btn-block">ĐẶT TOUR HUẾ NGAY</button>
       </form>
     </div>
@@ -175,7 +194,7 @@
     <div class="section-head reveal fade-in">
       <span class="eyebrow">Thông tin tour</span>
       <h2 class="section-title">Tour Huế Trong Ngày — Tổng Quan</h2>
-      <p class="section-sub" style="margin:0 auto">Hành trình 1 ngày khám phá di sản văn hóa thế giới UNESCO tại cố đô Huế.</p>
+      <p class="section-sub" style="margin:0 auto">Hành trình khám phá di sản văn hóa thế giới UNESCO tại cố đô Huế.</p>
     </div>
     <div class="info-grid">
       <div class="info-card reveal fade-in"><div class="info-icon">⭐</div><div><h4>Phương tiện</h4><p class="info-val">Xe du lịch đời mới</p></div></div>
@@ -361,46 +380,99 @@
   modalClose.addEventListener("click",closeModal);
   modal.addEventListener("click",function(e){if(e.target===modal)closeModal();});
   
-  document.getElementById("quickBookingForm").addEventListener("submit", async function(e){
-    e.preventDefault();
+  quickForm.addEventListener('submit', async function (e) {
 
-    const name = document.getElementById("qf-name").value;
-    const phone = document.getElementById("qf-phone").value;
-    const email = document.getElementById("qf-email").value;
-    const date = document.getElementById("qf-date").value;
-    const guests = document.getElementById("qf-guests").value;
-    const note = document.getElementById("qf-note").value;
+  e.preventDefault();
+
+  var name = document.getElementById('qf-name').value.trim();
+  var phone = document.getElementById('qf-phone').value.trim();
+  var email = document.getElementById('qf-email').value.trim();
+  var date = document.getElementById('qf-date').value;
+  var guests = document.getElementById('qf-guests').value;
+  var note = document.getElementById('qf-note').value.trim();
+
+  // Kiểm tra dữ liệu
+  if (!name || !phone || !tour) {
+    showToast(
+      'Thiếu thông tin',
+      'Vui lòng nhập Họ tên, Số điện thoại và chọn Tour.'
+    );
+    return;
+  }
 
   // ====== THAY BẰNG THÔNG TIN CỦA BẠN ======
   const BOT_TOKEN = "8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs";
   const CHAT_ID = "7286561986";
 
-    const message =
-`📌 Đơn Tour Huế Mới - 🌐 Gửi từ website PHUC TRAVEL
+  // Nội dung gửi về Telegram
+  const message = `
+📌 Đơn Tour Huế Mới - 🚐 ĐƠN ĐẶT TOUR MỚI - PHUC TRAVEL
 
 👤 Họ tên: ${name}
-📞 SĐT: ${phone}
-📧 Email: ${email}
-📅 Ngày đi: ${date}
-👥 Số khách: ${guests}
-📝 Ghi chú: ${note}`;
 
-    await fetch(
-      "https://api.telegram.org/bot8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs/sendMessage",
+📞 Số điện thoại: ${phone}
+
+📧 Email: ${email}
+
+📅 Ngày đi: ${date}
+
+👨‍👩‍👩‍👧 Số khách: ${guests}
+
+📝 Ghi chú:
+${note}
+
+🌐 Gửi từ website PHUC TRAVEL
+`;
+
+  try {
+
+    const response = await fetch(
+      `https://api.telegram.org/bot8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs/sendMessage`,
       {
         method: "POST",
         headers: {
-          "Content-Type":"application/json"
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          chat_id: "CHAT_ID",
+          chat_id: CHAT_ID,
           text: message
         })
       }
     );
 
-    openModal();
-    this.reset();
+    const result = await response.json();
+
+    if (result.ok) {
+
+      showToast(
+        'Đặt tour thành công!',
+        'PHUC TRAVEL sẽ liên hệ lại trong vòng 15 phút.'
+      );
+
+      quickForm.reset();
+
+    } else {
+
+      showToast(
+        'Lỗi',
+        'Không gửi được thông tin.'
+      );
+
+      console.log(result);
+
+    }
+
+  } catch (error) {
+
+    console.error(error);
+
+    showToast(
+      'Lỗi kết nối',
+      'Không thể kết nối tới Telegram.'
+    );
+
+  }
+
 });
 
   var dateInput=document.getElementById("qf-date");
