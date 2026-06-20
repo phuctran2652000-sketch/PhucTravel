@@ -383,9 +383,10 @@
 📧 Email: ${email || "Không nhập"}
 📅 Ngày đi: ${date}
 👥 Số khách: ${guests}
-📝 Ghi chú: ${note || "Không có"}`;
+📝 Ghi chú: ${note || "Không có"}
 
 🌐 Gửi từ website PHUC TRAVEL
+`;
 
   try {
     const res = await fetch(`https://api.telegram.org/bot8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs/sendMessage`, {
