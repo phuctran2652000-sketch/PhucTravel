@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Tour Huế Trong Ngày Từ Đà Nẵng Giá Tốt | PHUC TRAVEL</title>
-<meta name="description" content="Tour Huế trong ngày khởi hành từ Đà Nẵng. Tham quan Đại Nội Huế, Chùa Thiên Mụ, Lăng Khải Định, Hải Vân Quan. Xe đời mới, đón tận khách sạn, hỗ trợ 24/7.">
-<meta name="keywords" content="tour huế từ đà nẵng, tour huế 1 ngày, tour cố đô huế, tour đại nội huế, tour chùa thiên mụ, tour lăng khải định, phuc travel">
+<meta name="description" content="Tour Huế khởi hành từ Đà Nẵng. Tham quan Đại Nội Huế, Chùa Thiên Mụ, Lăng Khải Định, Hải Vân Quan. Xe đời mới, đón tận khách sạn, hỗ trợ 24/7.">
+<meta name="keywords" content="tour huế từ đà nẵng, tour cố đô huế, tour đại nội huế, tour chùa thiên mụ, tour lăng khải định, phuc travel">
 <meta name="author" content="PHUC TRAVEL">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://phuctravel.com/tour-hue.html">
@@ -15,7 +15,7 @@
 <meta property="og:locale" content="vi_VN">
 <meta property="og:url" content="https://phuctravel.com/tour-hue.html">
 <meta property="og:title" content="Tour Huế Trong Ngày Từ Đà Nẵng Giá Tốt | PHUC TRAVEL">
-<meta property="og:description" content="Tour Huế trong ngày khởi hành từ Đà Nẵng. Tham quan Đại Nội Huế, Chùa Thiên Mụ, Lăng Khải Định, Hải Vân Quan. Xe đời mới, đón tận khách sạn.">
+<meta property="og:description" content="Tour Huế khởi hành từ Đà Nẵng. Tham quan Đại Nội Huế, Chùa Thiên Mụ, Lăng Khải Định, Hải Vân Quan. Xe đời mới, đón tận khách sạn.">
 <meta property="og:image" content="https://statics.vinpearl.com/du-lich-Hue-Da-Nang-hinh-anh2.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -150,39 +150,20 @@
         <a href="https://zalo.me/0934984410" target="_blank" rel="noopener" class="btn btn-outline">💬 Zalo đặt tour</a>
       </div>
     </div>
-
     <div class="quick-form reveal zoom-in" id="booking-form">
       <h3>Đặt Tour Huế Nhanh</h3>
       <p class="qf-sub">PHUC TRAVEL phản hồi trong 15 phút</p>
       <form id="quickBookingForm">
-        <div class="form-row">
-          <label for="qf-name">Họ tên</label>
-          <input type="text" id="qf-name" name="name" placeholder="Nguyễn Văn A" required>
+        <div class="form-row"><label for="qf-name">Họ tên</label><input type="text" id="qf-name" name="name" placeholder="Nguyễn Văn A" required></div>
+        <div class="form-grid-2">
+          <div class="form-row"><label for="qf-phone">Số điện thoại</label><input type="tel" id="qf-phone" name="phone" placeholder="09xx xxx xxx" required></div>
+          <div class="form-row"><label for="qf-email">Email</label><input type="email" id="qf-email" name="email" placeholder="email@vidu.com"></div>
         </div>
         <div class="form-grid-2">
-          <div class="form-row">
-            <label for="qf-phone">Số điện thoại</label>
-            <input type="tel" id="qf-phone" name="phone" placeholder="09xx xxx xxx" required>
-          </div>
-          <div class="form-row">
-            <label for="qf-email">Email</label>
-            <input type="email" id="qf-email" name="email" placeholder="email@vidu.com">
-          </div>
+          <div class="form-row"><label for="qf-date">Ngày đi</label><input type="date" id="qf-date" name="date" required></div>
+          <div class="form-row"><label for="qf-guests">Số khách</label><input type="number" id="qf-guests" name="guests" min="1" value="2" required></div>
         </div>
-        <div class="form-grid-2">
-          <div class="form-row">
-            <label for="qf-date">Ngày đi</label>
-            <input type="date" id="qf-date" name="date" required>
-          </div>
-          <div class="form-row">
-            <label for="qf-guests">Số khách</label>
-            <input type="number" id="qf-guests" name="guests" min="1" value="2" required>
-          </div>
-        </div>
-        <div class="form-row">
-          <label for="qf-note">Ghi chú</label>
-          <textarea id="qf-note" name="note" placeholder="Yêu cầu thêm (nếu có)"></textarea>
-        </div>
+        <div class="form-row"><label for="qf-note">Ghi chú</label><textarea id="qf-note" name="note" placeholder="Yêu cầu thêm (nếu có)"></textarea></div>
         <button type="submit" class="btn btn-primary btn-block">ĐẶT TOUR HUẾ NGAY</button>
       </form>
     </div>
@@ -379,102 +360,53 @@
   function closeModal(){modal.classList.remove("open");document.body.style.overflow="";}
   modalClose.addEventListener("click",closeModal);
   modal.addEventListener("click",function(e){if(e.target===modal)closeModal();});
-  
-  quickForm.addEventListener('submit', async function (e) {
-
+  document.getElementById("quickBookingForm").addEventListener("submit", async function(e){
   e.preventDefault();
 
-  var name = document.getElementById('qf-name').value.trim();
-  var phone = document.getElementById('qf-phone').value.trim();
-  var email = document.getElementById('qf-email').value.trim();
-  var date = document.getElementById('qf-date').value;
-  var guests = document.getElementById('qf-guests').value;
-  var note = document.getElementById('qf-note').value.trim();
+  const token = "8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs";
+  const chatId = "7286561986";
 
-  // Kiểm tra dữ liệu
-  if (!name || !phone || !tour) {
-    showToast(
-      'Thiếu thông tin',
-      'Vui lòng nhập Họ tên, Số điện thoại và chọn Tour.'
-    );
-    return;
-  }
+  const name = document.getElementById("qf-name").value.trim();
+  const phone = document.getElementById("qf-phone").value.trim();
+  const email = document.getElementById("qf-email").value.trim();
+  const date = document.getElementById("qf-date").value;
+  const guests = document.getElementById("qf-guests").value;
+  const note = document.getElementById("qf-note").value.trim();
 
-  // ====== THAY BẰNG THÔNG TIN CỦA BẠN ======
-  const BOT_TOKEN = "8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs";
-  const CHAT_ID = "7286561986";
+  if (!name || !phone) return alert("Vui lòng nhập họ tên và số điện thoại");
 
-  // Nội dung gửi về Telegram
-  const message = `
-📌 Đơn Tour Huế Mới - 🚐 ĐƠN ĐẶT TOUR MỚI - PHUC TRAVEL
-
+  const message =
+`📌 ĐƠN TOUR HUẾ MỚI
 👤 Họ tên: ${name}
-
-📞 Số điện thoại: ${phone}
-
-📧 Email: ${email}
-
+📞 SĐT: ${phone}
+📧 Email: ${email || "Không nhập"}
 📅 Ngày đi: ${date}
-
-👨‍👩‍👩‍👧 Số khách: ${guests}
-
-📝 Ghi chú:
-${note}
-
-🌐 Gửi từ website PHUC TRAVEL
-`;
+👥 Số khách: ${guests}
+📝 Ghi chú: ${note || "Không có"}`;
 
   try {
+    const res = await fetch(`https://api.telegram.org/bot8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs/sendMessage`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message
+      })
+    });
 
-    const response = await fetch(
-      `https://api.telegram.org/bot8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs/sendMessage`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          chat_id: CHAT_ID,
-          text: message
-        })
-      }
-    );
-
-    const result = await response.json();
-
-    if (result.ok) {
-
-      showToast(
-        'Đặt tour thành công!',
-        'PHUC TRAVEL sẽ liên hệ lại trong vòng 15 phút.'
-      );
-
-      quickForm.reset();
-
-    } else {
-
-      showToast(
-        'Lỗi',
-        'Không gửi được thông tin.'
-      );
-
-      console.log(result);
-
+    if (!res.ok) {
+      const err = await res.text();
+      alert("Lỗi gửi Telegram: " + err);
+      return;
     }
 
-  } catch (error) {
-
-    console.error(error);
-
-    showToast(
-      'Lỗi kết nối',
-      'Không thể kết nối tới Telegram.'
-    );
-
+    openModal();
+    this.reset();
+  } catch (err) {
+    alert("Không gửi được đơn. Kiểm tra mạng hoặc token.");
+    console.error(err);
   }
-
 });
-
   var dateInput=document.getElementById("qf-date");
   if(dateInput){dateInput.setAttribute("min",new Date().toISOString().split("T")[0]);}
   var galleryImgs=Array.prototype.map.call(document.querySelectorAll("#galleryGrid img"),function(img){return img.src;});
