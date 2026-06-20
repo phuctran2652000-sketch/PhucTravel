@@ -360,12 +360,45 @@
   function closeModal(){modal.classList.remove("open");document.body.style.overflow="";}
   modalClose.addEventListener("click",closeModal);
   modal.addEventListener("click",function(e){if(e.target===modal)closeModal();});
-  document.getElementById("quickBookingForm").addEventListener("submit",function(e){
+  
+  document.getElementById("quickBookingForm").addEventListener("submit", async function(e){
     e.preventDefault();
-    var name=document.getElementById("qf-name").value.trim(),phone=document.getElementById("qf-phone").value.trim();
-    if(!name||!phone)return;
-    openModal();this.reset();
-  });
+
+    const name = document.getElementById("qf-name").value;
+    const phone = document.getElementById("qf-phone").value;
+    const email = document.getElementById("qf-email").value;
+    const date = document.getElementById("qf-date").value;
+    const guests = document.getElementById("qf-guests").value;
+    const note = document.getElementById("qf-note").value;
+
+    const message =
+`📌 Đơn Tour Huế Mới - 🌐 Gửi từ website PHUC TRAVEL
+
+👤 Họ tên: ${name}
+📞 SĐT: ${phone}
+📧 Email: ${email}
+📅 Ngày đi: ${date}
+👥 Số khách: ${guests}
+📝 Ghi chú: ${note}`;
+
+    await fetch(
+      "https://api.telegram.org/bot8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs/sendMessage",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+          chat_id: "CHAT_ID",
+          text: message
+        })
+      }
+    );
+
+    openModal();
+    this.reset();
+});
+
   var dateInput=document.getElementById("qf-date");
   if(dateInput){dateInput.setAttribute("min",new Date().toISOString().split("T")[0]);}
   var galleryImgs=Array.prototype.map.call(document.querySelectorAll("#galleryGrid img"),function(img){return img.src;});
