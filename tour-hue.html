@@ -376,13 +376,16 @@
   if (!name || !phone) return alert("Vui lòng nhập họ tên và số điện thoại");
 
   const message =
-`📌 ĐƠN TOUR HUẾ MỚI
+`📌 ĐƠN TOUR HUẾ MỚI- 🚐 ĐƠN ĐẶT TOUR MỚI - PHUC TRAVEL
+
 👤 Họ tên: ${name}
 📞 SĐT: ${phone}
 📧 Email: ${email || "Không nhập"}
 📅 Ngày đi: ${date}
 👥 Số khách: ${guests}
 📝 Ghi chú: ${note || "Không có"}`;
+
+🌐 Gửi từ website PHUC TRAVEL
 
   try {
     const res = await fetch(`https://api.telegram.org/bot8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs/sendMessage`, {
