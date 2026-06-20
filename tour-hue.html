@@ -371,6 +371,19 @@
     const guests = document.getElementById("qf-guests").value;
     const note = document.getElementById("qf-note").value;
 
+    // Kiểm tra dữ liệu
+  if (!name || !phone || !tour) {
+    showToast(
+      'Thiếu thông tin',
+      'Vui lòng nhập Họ tên, Số điện thoại và chọn Tour.'
+    );
+    return;
+  }
+
+  // ====== THAY BẰNG THÔNG TIN CỦA BẠN ======
+  const BOT_TOKEN = "8863069785:AAFcKvgzMUUUOc1bWtNQuhgGSEn5vmtZUgs";
+  const CHAT_ID = "7286561986";
+
     const message =
 `📌 Đơn Tour Huế Mới - 🌐 Gửi từ website PHUC TRAVEL
 
